@@ -38,7 +38,7 @@ const SearchModal = () => {
 
     const Map = useMemo(
         () => dynamic(() => import('../Map'), { ssr: false }),
-        [location]
+        [location] // eslint-disable-line
     );
 
     const onBack = useCallback(() => {

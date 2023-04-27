@@ -64,7 +64,7 @@ const RentModal = () => {
             dynamic(() => import('../Map'), {
                 ssr: false,
             }),
-        [location]
+        [location] // eslint-disable-line
     );
 
     const setCustomValue = (id: string, value: any) => {
