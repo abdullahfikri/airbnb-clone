@@ -2,17 +2,16 @@
 import { useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { format } from 'date-fns';
-
-import useCountries from '@/app/hooks/useCountries';
-import { SafeUser } from '@/app/types';
-import { Listing, Reservation } from '@prisma/client';
 import Image from 'next/image';
+
+import { SafeUser, SafeListing, SafeReservation } from '@/app/types';
+import useCountries from '@/app/hooks/useCountries';
 import HeartButton from '../HeartButton';
 import Button from '../Button';
 
 interface ListingCardProps {
-    data: Listing;
-    reservation?: Reservation;
+    data: SafeListing;
+    reservation?: SafeReservation;
     onAction?: (id: string) => void;
     disable?: boolean;
     actionLabel?: string;
@@ -33,7 +32,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
     const { getByValue } = useCountries();
 
     const location = getByValue(data.locationValue);
-    // TODO: next 5:05:00
 
     const handleCancel = useCallback(
         (e: React.MouseEvent<HTMLButtonElement>) => {
